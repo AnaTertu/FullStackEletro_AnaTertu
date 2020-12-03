@@ -112,3 +112,47 @@ create table fullstackeletro.pedidos (
   (default, 'Maurício Rogério Souto', 'Rua H, 255 Ap15 - Santo Amaro', 1188888888, 'Microondas 25 litros Espelhado Philco', 464.53, 3, 1393.59),
   (default, 'Laura Rodrigues', 'Rua I, 2 - Jundiaí', 1199999999, 'Geladeira Frost Free Brastemp Branca 375 litros', 1910.90, 1, 1910.90),
   (default, 'Lurdes Rodrigues', 'Rua J, 555 ap.106 - Pirituba', 1112345678, 'Lavadadora de Roupas Brastemp 11kg com Turbo Performace Branca', 1214.10, 10, 12141.00);
+
+
+/*
+class nomedaTabela
+{
+  public id;
+  public name;
+  public fone;
+
+  public function getAll()
+  {
+    -- SELECT *FROM nomedaTabela
+  }
+
+  public function registernomedaTabela()
+  {
+     -- INSERT INTO nomedaTabela values ("Ana", 519845)
+  }
+
+  public function deletenomedaTabela()
+  {
+     -- DELETE FROM nomedaTabela where id = 1
+  }
+
+  public function updatenomedaTabela()
+  {
+      -- UPDATE students SET nome = "Ana", fone = "519845" WHERE id = 1
+  }
+}
+
+M = Models - que está acima
+
+V = views - todo visual - a página em si
+
+C = controllers - é um intermediario emtre views e models -contém as regras da aplicação, por que nunca irei inseriir na views um chamada da tabela
+
+por exemplo não posso dentro de form
+
+<form action="db.php"> 
+
+ou algo do tipo, não é possível
+
+<form action="dbController.php"
+*/

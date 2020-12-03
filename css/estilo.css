@@ -92,7 +92,6 @@ main .card form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 main .card h1 {
   margin-bottom: 16px;

@@ -1,5 +1,27 @@
 <?php
-    //$servername = "localhost";
+    
+class Connection
+{
+    public function getDb()
+    {
+        $conn = new PDO(
+            "mysql: host=localhost;dbneme=fullstackeletro;charset=utf8",
+            "root",
+            ""
+        );
+
+        if ($conn) {
+            return "<h4>Conexão ok</h4>";
+        } else {
+            return "<h4> Erro ao realizar conexão </h4>";
+        }        
+    }
+}
+
+$conn = new Connection;
+echo $conn->getDb();
+
+//$servername = "localhost";
     //$username = "root";
     //$password = "";
     //$database = "fullstackeletro";
@@ -10,23 +32,3 @@
     //if(!$connection){
     //    die("A conexão falhou " . mysqli_connect_error());
     //}
-
-
-class Connection
-{
-    public function getDB()
-    {
-        $conn = new PDO(
-            "mysql: host=localhost;dbneme=fullstackeletro;charset=utf8",
-            "root",
-            ""
-        );
-
-        if ($conn) {
-            return $conn;
-        } else {
-            return "<h1> Erro ao realizar conexão </h1>";
-        }
-        
-    }
-}
