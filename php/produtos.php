@@ -1,5 +1,5 @@
 <?php
-    include_once('./actions/connection.php');    
+    include_once('../Connection.php');    
 ?>
 
 <!DOCTYPE html>

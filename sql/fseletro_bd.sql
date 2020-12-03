@@ -1,55 +1,31 @@
-create database fullstackeletro;
+DROP DATABASE IF EXISTS fullstackeletro;
+CREATE DATABASE IF NOT EXISTS fullstackeletro;
 
-CREATE TABLE bancos(
+CREATE TABLE fullstackeletro;
+
+CREATE TABLE fullstackeletro.bancos(
 	codigo VARCHAR(3) NOT NULL,
 	nome VARCHAR(20) NOT NULL,
     PRIMARY KEY(codigo)
 );
 
 
-CREATE TABLE pessoas(
+CREATE TABLE fullstackeletro.pessoas(
 	cpf VARCHAR(12) NOT NULL,
 	nome VARCHAR(40) NOT NULL,
     PRIMARY KEY(cpf)
 );
 
-CREATE TABLE conta_corrente(
+CREATE TABLE fullstackeletro.conta_corrente(
 	banco VARCHAR(3) NOT NULL,
     pessoa VARCHAR(12) NOT NULL,
-    numero VARCHAR(8) NOT NULL,
+    numero VARCHAR(20) NOT NULL,
     FOREIGN KEY (banco) REFERENCES bancos(codigo),
     FOREIGN KEY (pessoa) REFERENCES pessoas(cpf),
     PRIMARY KEY(numero)
 );
 
-INSERT INTO bancos(codigo, nome) VALUES('341','Itaú');
-INSERT INTO bancos(codigo, nome) VALUES('001','Banco do Brasil');
-INSERT INTO bancos(codigo, nome) VALUES('033','Santander');
-INSERT INTO bancos(codigo, nome) VALUES('237','Bradesco');
-
-INSERT INTO pessoas(cpf, nome) VALUES('86277635697','José da Silva');
-INSERT INTO pessoas(cpf, nome) VALUES('88208811874','Manoel da Silva');
-INSERT INTO pessoas(cpf, nome) VALUES('665167647743','Maria dos Santos');
-
-INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('033','86277635697','98876788');
-INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('237','86277635697','96645727');
-INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('341','665167647743','9102947');
-INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('001','88208811874','8120938');
-
-
-INSERT INTO bancos(codigo, nome) VALUES('442','Safra');
-
-INSERT INTO pessoas(cpf, nome) VALUES('12345678912','Manoela Silva');
-INSERT INTO pessoas(cpf, nome) VALUES('12345678977','Mario Santos');
-
-
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-create table usuarios(
+create table fullstackeletro.usuarios(
   idusuario int not null primary key AUTO_INCREMENT,
   nome varchar(80) not null,
   mensagem varchar(200),
@@ -57,12 +33,7 @@ create table usuarios(
   senha char(32) not null
 )comment = 'Para o usuário na loja FullStackEletro.';
 
-
-INSERT INTO `usuarios` (`idusuario`, `nome`, `mensagem`, `email`, `senha`) VALUES
-(1, 'Ana Tertuliano', 'Olá mundo!','ana.tertu.2019@gmail.com', 123456),
-(2, '', '', '', '')
-
-create table produtos (
+create table fullstackeletro.produtos (
 	idprodutos int not null primary key auto_increment,
     nomeimagem varchar(45) not null,
     descricao varchar(150) not null,
@@ -71,9 +42,51 @@ create table produtos (
     imagem varchar(255) not null
     ) comment = 'Produtos anúnciados na loja FullStackEletro.';
     
-insert into produtos (idprodutos, nomeimagem, descricao, preco, precofinal, imagem) 
+create table fullstackeletro.pedidos (
+  idpedidos int not null auto_increment,
+  nomecliente varchar(45) not null,
+  endereco varchar(150),
+  fonecliente int not null,
+  nomeproduto varchar(150),
+  valorunitario decimal(8,2),
+  quantidade int,
+  valortotal decimal(8,2),
+  primary key (idpedidos)
+  ) comment = 'Produtos anunciados na loja FullStackEletro';
 
-values 
+
+    SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+    START TRANSACTION;
+    SET time_zone = "+00:00";
+
+  INSERT INTO bancos(codigo, nome) VALUES('341','Itaú');
+  INSERT INTO bancos(codigo, nome) VALUES('001','Banco do Brasil');
+  INSERT INTO bancos(codigo, nome) VALUES('033','Santander');
+  INSERT INTO bancos(codigo, nome) VALUES('237','Bradesco');
+
+  INSERT INTO pessoas(cpf, nome) VALUES('86277635697','José da Silva');
+  INSERT INTO pessoas(cpf, nome) VALUES('88208811874','Manoel da Silva');
+  INSERT INTO pessoas(cpf, nome) VALUES('665167647743','Maria dos Santos');
+
+  INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('033','86277635697','98876788');
+  INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('237','86277635697','96645727');
+  INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('341','665167647743','9102947');
+  INSERT INTO conta_corrente(banco, pessoa, numero) VALUES('001','88208811874','8120938');
+
+
+  INSERT INTO bancos(codigo, nome) VALUES('442','Safra');
+
+  INSERT INTO pessoas(cpf, nome) VALUES('12345678912','Manoela Silva');
+  INSERT INTO pessoas(cpf, nome) VALUES('12345678977','Mario Santos');
+
+  INSERT INTO `usuarios` (`idusuario`, `nome`, `mensagem`, `email`, `senha`) VALUES
+  (1, 'Ana Tertuliano', 'Olá mundo!','ana.tertu.2019@gmail.com', 123456),
+  (2, '', '', '', '')
+
+
+  insert into produtos (idprodutos, nomeimagem, descricao, preco, precofinal, imagem) 
+
+  values 
   (default, 'geladeira', 'geladeira frost free brastemp side inverse 540 litros', 6389.00, 5019.00, 'imagens/geladeira_brastemp.jpg'),
   (default, 'geladeira', 'geladeira frost free brastemp branca 375 litros', 2068.60, 1910.90, 'imagens/refrigerador_brastemp.png'),
   (default, 'geladeira', 'geladeira frost free consul prata 340 litros', 2199.90, 2069.00, 'imagens/refrigerador_consul.png'),
@@ -86,22 +99,9 @@ values
   (default, 'lavalouca', 'lava-louças compacta 8 serviços branca 127v brastemp', 1970.50, 1730.61, 'imagens/lava_loucas_brastemp.jpg'),
   (default, 'lavaroupa', 'lavadadora de roupas brastemp 11kg com turbo performace branca', 1699.00, 1214.10, 'imagens/lavadora_brastemp.jpg'),
   (default, 'lavaroupa', 'lavadora philco inverter 12kg', 2399.90, 2179.90, 'imagens/lavadora_philco.jpeg');
-
-    
-create table pedidos (
-  idpedidos int not null auto_increment,
-  nomecliente varchar(45) not null,
-  endereco varchar(150),
-  fonecliente int not null,
-  nomeproduto varchar(150),
-  valorunitario decimal(8,2),
-  quantidade int,
-  valortotal decimal(8,2),
-  primary key (idpedidos)
-  ) comment = 'Produtos anunciados na loja FullStackEletro';
   
   insert into pedidos (idpedidos, nomecliente, endereco, fonecliente, nomeproduto, valorunitario, quantidade, valortotal) 
-values 
+  values 
   (default, 'Amanda Soares', 'Rua A, 45 - Itaquera', 1111111111, 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 5019.00, 1, 5019.19),
   (default, 'Fátima Lima', 'Rua B, 155 - São Miguel', 1122222222, 'Fogão 4 Bocas Consul Inox com Mesa de Vidro', 1129.00, 2, 2258.00),
   (default, 'Maurício Rogério Souto', 'Rua C, 255 Ap15 - Santo Amaro', 1133333333, 'Microondas 25 litros Espelhado Philco 220', 464.53, 3, 1393.50),
@@ -112,15 +112,3 @@ values
   (default, 'Maurício Rogério Souto', 'Rua H, 255 Ap15 - Santo Amaro', 1188888888, 'Microondas 25 litros Espelhado Philco', 464.53, 3, 1393.59),
   (default, 'Laura Rodrigues', 'Rua I, 2 - Jundiaí', 1199999999, 'Geladeira Frost Free Brastemp Branca 375 litros', 1910.90, 1, 1910.90),
   (default, 'Lurdes Rodrigues', 'Rua J, 555 ap.106 - Pirituba', 1112345678, 'Lavadadora de Roupas Brastemp 11kg com Turbo Performace Branca', 1214.10, 10, 12141.00);
-
-
-  /*
-  -- DROP TABLE fullstackeletro.produtos;
--- DROP TABLE fullstackeletro.pedidos;
--- DROP TABLE fullstackeletro.comentarios;
--- DROP SCHEMA fullstackeletro;
-CREATE SCHEMA fullstackeletro;
-
-
-USE fullstackeletro;
-*/

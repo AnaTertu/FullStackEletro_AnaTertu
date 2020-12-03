@@ -1,5 +1,5 @@
 <?php
-  include_once('./actions/connection.php');    
+  include_once('../Connection.php');    
 ?>
 
 <?php
@@ -59,7 +59,12 @@ echo fatorial(8);
         </table>
         
         <form class="container">
+        
+           
             <h3>Nome: </h3>
+            <input type="text" class="nome_Usuario">
+            <?php require "./actions/User.php"?>
+            <h3>Telefone: </h3>
             <input type="text" class="nome_Usuario">
             <br/>
             <br/>
@@ -74,5 +79,6 @@ echo fatorial(8);
         <?php 
             include_once ("../includes/rodape.php");
         ?>
+         
     </body>
 </html>

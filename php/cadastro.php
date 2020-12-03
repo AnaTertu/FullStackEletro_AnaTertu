@@ -1,5 +1,5 @@
 <?php
-  include_once('./actions/connection.php');    
+  include_once('../Connection.php');    
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="../css/estilo.css">
     </head>
     <body>
+    
         <?php
             include_once('../includes/menuIndex.php');    
         ?>
@@ -33,7 +34,7 @@
                 </div>
             </section>
         </main>
-
+    
         <?php include_once('../includes/rodape.php') ?>
 
     </body>
