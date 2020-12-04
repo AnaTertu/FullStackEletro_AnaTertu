@@ -1,5 +1,8 @@
 <?php
-  include_once('../Connection.php');    
+    require "../Connection.php"; 
+    
+    $conn = new Connection;
+    $conn->getDb();
 ?>
 
 <!DOCTYPE html>

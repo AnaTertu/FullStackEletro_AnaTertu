@@ -3,17 +3,17 @@ CREATE DATABASE IF NOT EXISTS fullstackeletro;
 
 CREATE TABLE fullstackeletro;
 
+CREATE TABLE fullstackeletro.people(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	names VARCHAR(80) NOT NULL,
+  phones VARCHAR(20) NOT NULL,
+  posts VARCHAR(200)
+);
+
 CREATE TABLE fullstackeletro.bancos(
 	codigo VARCHAR(3) NOT NULL,
 	nome VARCHAR(20) NOT NULL,
     PRIMARY KEY(codigo)
-);
-
-
-CREATE TABLE fullstackeletro.pessoas(
-	cpf VARCHAR(12) NOT NULL,
-	nome VARCHAR(40) NOT NULL,
-    PRIMARY KEY(cpf)
 );
 
 CREATE TABLE fullstackeletro.conta_corrente(
@@ -26,32 +26,32 @@ CREATE TABLE fullstackeletro.conta_corrente(
 );
 
 create table fullstackeletro.usuarios(
-  idusuario int not null primary key AUTO_INCREMENT,
-  nome varchar(80) not null,
-  mensagem varchar(200),
-  email varchar(80) not null UNIQUE,
-  senha char(32) not null
+  idusuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(80) NOT NULL,
+  mensagem VARCHAR(200),
+  email VARCHAR(80) NOT NULL UNIQUE,
+  senha CHAR(32) NOT NULL
 )comment = 'Para o usuário na loja FullStackEletro.';
 
 create table fullstackeletro.produtos (
-	idprodutos int not null primary key auto_increment,
-    nomeimagem varchar(45) not null,
-    descricao varchar(150) not null,
-    preco decimal(8,2) not null,
-    precofinal decimal(8,2) not null,
-    imagem varchar(255) not null
+	idprodutos INT NOT NULL PRIMARY KEY auto_increment,
+    nomeimagem VARCHAR(45) NOT NULL,
+    descricao VARCHAR(150) NOT NULL,
+    preco DECIMAL(8,2) NOT NULL,
+    precofinal DECIMAL(8,2) NOT NULL,
+    imagem VARCHAR(255) NOT NULL
     ) comment = 'Produtos anúnciados na loja FullStackEletro.';
     
 create table fullstackeletro.pedidos (
-  idpedidos int not null auto_increment,
-  nomecliente varchar(45) not null,
-  endereco varchar(150),
-  fonecliente int not null,
-  nomeproduto varchar(150),
-  valorunitario decimal(8,2),
-  quantidade int,
-  valortotal decimal(8,2),
-  primary key (idpedidos)
+  idpedidos INT NOT NULL auto_increment,
+  nomecliente VARCHAR(45) NOT NULL,
+  endereco VARCHAR(150),
+  fonecliente INT NOT NULL,
+  nomeproduto VARCHAR(150),
+  valorunitario DECIMAL(8,2),
+  quantidade INT,
+  valortotal DECIMAL(8,2),
+  PRIMARY KEY (idpedidos)
   ) comment = 'Produtos anunciados na loja FullStackEletro';
 
 
@@ -59,6 +59,7 @@ create table fullstackeletro.pedidos (
     START TRANSACTION;
     SET time_zone = "+00:00";
 
+  
   INSERT INTO bancos(codigo, nome) VALUES('341','Itaú');
   INSERT INTO bancos(codigo, nome) VALUES('001','Banco do Brasil');
   INSERT INTO bancos(codigo, nome) VALUES('033','Santander');
@@ -84,9 +85,9 @@ create table fullstackeletro.pedidos (
   (2, '', '', '', '')
 
 
-  insert into produtos (idprodutos, nomeimagem, descricao, preco, precofinal, imagem) 
+  INSERT INTO produtos (idprodutos, nomeimagem, descricao, preco, precofinal, imagem) 
 
-  values 
+  VALUES
   (default, 'geladeira', 'geladeira frost free brastemp side inverse 540 litros', 6389.00, 5019.00, 'imagens/geladeira_brastemp.jpg'),
   (default, 'geladeira', 'geladeira frost free brastemp branca 375 litros', 2068.60, 1910.90, 'imagens/refrigerador_brastemp.png'),
   (default, 'geladeira', 'geladeira frost free consul prata 340 litros', 2199.90, 2069.00, 'imagens/refrigerador_consul.png'),
@@ -100,8 +101,8 @@ create table fullstackeletro.pedidos (
   (default, 'lavaroupa', 'lavadadora de roupas brastemp 11kg com turbo performace branca', 1699.00, 1214.10, 'imagens/lavadora_brastemp.jpg'),
   (default, 'lavaroupa', 'lavadora philco inverter 12kg', 2399.90, 2179.90, 'imagens/lavadora_philco.jpeg');
   
-  insert into pedidos (idpedidos, nomecliente, endereco, fonecliente, nomeproduto, valorunitario, quantidade, valortotal) 
-  values 
+  INSERT INTO pedidos (idpedidos, nomecliente, endereco, fonecliente, nomeproduto, valorunitario, quantidade, valortotal) 
+  VALUES
   (default, 'Amanda Soares', 'Rua A, 45 - Itaquera', 1111111111, 'Geladeira Frost Free Brastemp Side Inverse 540 litros', 5019.00, 1, 5019.19),
   (default, 'Fátima Lima', 'Rua B, 155 - São Miguel', 1122222222, 'Fogão 4 Bocas Consul Inox com Mesa de Vidro', 1129.00, 2, 2258.00),
   (default, 'Maurício Rogério Souto', 'Rua C, 255 Ap15 - Santo Amaro', 1133333333, 'Microondas 25 litros Espelhado Philco 220', 464.53, 3, 1393.50),
@@ -112,47 +113,3 @@ create table fullstackeletro.pedidos (
   (default, 'Maurício Rogério Souto', 'Rua H, 255 Ap15 - Santo Amaro', 1188888888, 'Microondas 25 litros Espelhado Philco', 464.53, 3, 1393.59),
   (default, 'Laura Rodrigues', 'Rua I, 2 - Jundiaí', 1199999999, 'Geladeira Frost Free Brastemp Branca 375 litros', 1910.90, 1, 1910.90),
   (default, 'Lurdes Rodrigues', 'Rua J, 555 ap.106 - Pirituba', 1112345678, 'Lavadadora de Roupas Brastemp 11kg com Turbo Performace Branca', 1214.10, 10, 12141.00);
-
-
-/*
-class nomedaTabela
-{
-  public id;
-  public name;
-  public fone;
-
-  public function getAll()
-  {
-    -- SELECT *FROM nomedaTabela
-  }
-
-  public function registernomedaTabela()
-  {
-     -- INSERT INTO nomedaTabela values ("Ana", 519845)
-  }
-
-  public function deletenomedaTabela()
-  {
-     -- DELETE FROM nomedaTabela where id = 1
-  }
-
-  public function updatenomedaTabela()
-  {
-      -- UPDATE students SET nome = "Ana", fone = "519845" WHERE id = 1
-  }
-}
-
-M = Models - que está acima
-
-V = views - todo visual - a página em si
-
-C = controllers - é um intermediario emtre views e models -contém as regras da aplicação, por que nunca irei inseriir na views um chamada da tabela
-
-por exemplo não posso dentro de form
-
-<form action="db.php"> 
-
-ou algo do tipo, não é possível
-
-<form action="dbController.php"
-*/

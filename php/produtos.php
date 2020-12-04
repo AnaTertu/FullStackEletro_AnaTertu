@@ -1,6 +1,10 @@
 <?php
-    include_once('../Connection.php');    
+    require "../Connection.php"; 
+    
+    $conn = new Connection;
+    $conn->getDb();
 ?>
+<!-- verificar por que não funciona sem ../ e notificar uso diferente em outras páginas-->
 
 <!DOCTYPE html>
 <html lang="pt-br">
