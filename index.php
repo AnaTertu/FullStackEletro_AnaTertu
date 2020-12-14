@@ -15,8 +15,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/estilo.css">
         <script src="js/script.js"></script>
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
-      <!--  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="Web site created using create-react-app"/>
 

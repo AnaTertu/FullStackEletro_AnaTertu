@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {Footer, Header, Left} from './Footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Footer dados={ {ano:2020, mes:12, dia:13}}/>
     </div>
   );
 }
